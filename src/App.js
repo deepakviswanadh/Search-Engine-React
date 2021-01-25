@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import unsplash from "./api/unsplash";
+import ImageList from "./components/ImageList";
+import SearchBar from "./components/SearchBar";
 import "./App.css";
 
-import SearchBar from "./components/SearchBar";
 const App = () => {
   const [images, setImages] = useState([]);
 
@@ -11,25 +12,19 @@ const App = () => {
       params: {
         query: e,
       },
-      headers: {
-        Authorization: "Client-ID VTgWAm_KksurfPaJNXUbaTYxrNR_uCLMfHw9V-jA6dI",
-      },
     };
     try {
-      let res = await axios.get(
-        "https://api.unsplash.com/search/photos",
-        config
-      );
-      setImages({ images: res.data.results });
-      console.log(images);
+      let res = await unsplash.get("/search/photos", config);
+      setImages(res.data.results);
     } catch (err) {
-      console.error(err.response.data);
+      console.error(err.response);
     }
   };
   return (
     <div className="ui container" id="abc">
       <SearchBar onSubmitApp={(e) => onSubmitHandler(e)} />
       Found:{images.length} related images
+      <ImageList Images={images} />
     </div>
   );
 };
