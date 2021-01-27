@@ -1,1 +1,1 @@
-Search Engine which resembles Google Images search.
+Non-copyright risk free Images search engine app based on Unsplash.
