@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const SearchBar = (props) => {
   const [name, setName] = useState({
-    value1: "",
+    value1: " ",
   });
   const { value1 } = name;
   const onChange1 = (e) => {
@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
   const onSubmit1 = (e) => {
     e.preventDefault();
-    props.onSubmitApp(value1);
+    props.onSubmitApp(name);
   };
 
   return (

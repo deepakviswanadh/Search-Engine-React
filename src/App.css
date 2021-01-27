@@ -1,3 +1,13 @@
 #abc {
   margin-top: 10px;
 }
+.img-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.img-list img {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+}
